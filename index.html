@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メインウィンドウ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>メインウィンドウ</h1>
+
+    <script>
+        window.onload = function() {
+            // ウィンドウのサイズ設定
+            const window2Width = 800;
+            const window2Height = 400; // ウィンドウ②の高さ
+            const window3Width = 450;
+            const window3Height = 300; // ウィンドウ③の高さを増やす
+
+            // ウィンドウ②を左下に配置
+            const left2 = 0; // 左端
+            const top2 = window.innerHeight - window2Height; // 下端
+
+            // ウィンドウ③を中央に配置
+            const left3 = (window.innerWidth / 2) - (window3Width / 2);
+            const top3 = (window.innerHeight / 2) - (window3Height / 2);
+
+            // ウィンドウ②を開く
+            const window2 = window.open('https://iweb.is.jp.panasonic.com/hop/pa/va/ctsfaq/a2A/FAQ0201.FaqSsoLogin?p_id=3151', '_blank', `width=${window2Width},height=${window2Height},top=${top2},left=${left2}`);
+
+            // ウィンドウ③を開く
+            const window3 = window.open('', 'popup', `width=${window3Width},height=${window3Height},top=${top3},left=${left3}`);
+
+            // ウィンドウ③の内容を設定
+            window3.document.write(`
+                <!DOCTYPE html>
+                <html lang="ja">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>お応えする前に、確認しましょう。</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            padding: 20px;
+                            margin: 0;
+                            overflow: hidden; /* スクロールを無効にする */
+                        }
+                        h2 {
+                            color: #4CAF50;
+                        }
+                        p {
+                            font-size: 16px;
+                            line-height: 1.5;
+                        }
+                        button {
+                            padding: 10px 20px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            background-color: #4CAF50;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>お応えする前に、確認しましょう。</h2>
+                    <p>
+                        既設スイッチ取替え相談の場合、<br>
+                        ①現在の配線方式を確認しましょう<br>
+                        （２線式？それ以外？）<br>
+                        ②２線式なら使用不可を説明してください<br>
+                        （配線変更の電気工事が必要）<br>
+                    </p>
+                    <button onclick="window.close();">確認しました</button>
+                </body>
+                </html>
+            `);
+
+            // ウィンドウ②が開いたら、メインウィンドウを閉じる
+            if (window2) {
+                window.close();
+            } else {
+                alert("ポップアップがブロックされている可能性があります。");
+            }
+        };
+    </script>
+</body>
+</html>
